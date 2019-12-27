@@ -21,29 +21,29 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping(path = "/api/course/findAllCourses", produces = "application/json")
+    @GetMapping(path = "api/course/findAllCourses", produces = "application/json")
     public HttpEntity<List<CourseDto>> findAllCourses(){
-        
+
         List<CourseDto> allCourses = courseService.findAllCourses();
 
         return new ResponseEntity<>(allCourses, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/api/course/findAllCoursesDto", produces = "application/json")
+    @GetMapping(path = "api/course/findAllCoursesDto", produces = "application/json")
     public HttpEntity<List<CourseDto>> findAllCoursesDto(){
         List<CourseDto> allCourses = courseService.findAllCoursesDtoFromDB();
 
         return new ResponseEntity<>(allCourses, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/api/course/findAllCoursesWithTNDto", produces = "application/json")
+    @GetMapping(path = "api/course/findAllCoursesWithTNDto", produces = "application/json")
     public HttpEntity<List<CourseWithTNDto>> findAllCoursesWithTNDto(){
         List<CourseWithTNDto> allCourses = courseService.findAllCoursesDtoWithTeacherNameFromDB();
 
         return new ResponseEntity<>(allCourses, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/api/course/registerCourse/{courseName}", produces = "application/json")
+    @PostMapping(path = "api/course/registerCourse/{courseName}", produces = "application/json")
     public HttpStatus registerCourse(@PathVariable String courseName) {
         try {
             courseService.registerCourse(courseName);
@@ -53,7 +53,7 @@ public class CourseController {
         }
     }
 
-    @PostMapping(path = "/api/course/addCourse", produces = "application/json")
+    @PostMapping(path = "api/course/addCourse", produces = "application/json")
     public HttpStatus addCourse(@RequestBody @NotNull CourseDto course) {
         try {
             courseService.addCourse(course);
@@ -63,7 +63,7 @@ public class CourseController {
         }
     }
 
-    @PutMapping(path = "/api/course/updateCourse", produces = "application/json")
+    @PutMapping(path = "api/course/updateCourse", produces = "application/json")
     public HttpStatus updateCourse(@RequestBody @NotNull CourseDto course) {
         try {
             courseService.updateCourse(course);
@@ -73,7 +73,7 @@ public class CourseController {
         }
     }
 
-    @DeleteMapping(path = "/api/course/deleteCourse/{courseName}", produces = "application/js")
+    @DeleteMapping(path = "api/course/deleteCourse/{courseName}", produces = "application/js")
     public HttpStatus deleteCourse(@NotNull @PathVariable("courseName") String courseName) {
         try {
             courseService.deleteCourse(courseName);
